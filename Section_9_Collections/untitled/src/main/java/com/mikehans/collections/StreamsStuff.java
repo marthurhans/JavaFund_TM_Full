@@ -39,7 +39,7 @@ public class StreamsStuff {
                 .map(Employee::createEmployee)
                 .map(e -> (Employee)e)
                 .filter(dummySelector.negate())
-                .filter(e -> e.getSalary() < 0)
+                .filter(e -> e.getSalary() > 2)
                 .findFirst();
         System.out.println(optionEmp
                 .map(Employee::getFirstName)

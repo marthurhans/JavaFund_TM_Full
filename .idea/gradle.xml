@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Section_7_Testing_Code/EXERCISES_Section_7/BlackJack" />
+        <option name="gradleJvm" value="corretto-17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Section_7_Testing_Code/EXERCISES_Section_7/BlackJack" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Section_7_Testing_Code/EXERCISES_Section_7/untitled" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Section_7_Testing_Code/EXERCISES_Section_7/untitled" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Section_8_More_OOP/EXERCISES_SECTION_8/Exercises_8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Section_8_More_OOP/EXERCISES_SECTION_8/Exercises_8" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Section_9_Collections/Section9Collections" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Section_9_Collections/Section9Collections" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/Section_9_Collections/untitled" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/Section_9_Collections/untitled" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/java-foundations-solutions-master" />
+        <option name="gradleJvm" value="corretto-21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/java-foundations-solutions-master" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
