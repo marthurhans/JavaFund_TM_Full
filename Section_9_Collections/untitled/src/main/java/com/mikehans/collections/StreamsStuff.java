@@ -3,16 +3,18 @@ package com.mikehans.collections;
 
 //adding a comment to check git
 import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.Comparator.comparing;
 
 public class StreamsStuff {
 
     public static void main(String[] args) {
         String peopleText = """
-            Flinstone, Fred, 1/1/1900, Programmer, {locpd=2000,yoe=10,iq=140}
-            Flinstone, Fred, 1/1/1900, Programmer, {locpd=2000,yoe=10,iq=140}
-            Flinstone, Fred, 1/1/1900, Programmer, {locpd=2000,yoe=10,iq=140}
-            Flinstone, Fred, 1/1/1900, Programmer, {locpd=2000,yoe=10,iq=140}
             Flinstone, Fred, 1/1/1900, Programmer, {locpd=2000,yoe=10,iq=140}
             
             Flinstone2, Fred2, 1/1/1900, Programmer, {locpd=1300,yoe=14,iq=100}
@@ -32,18 +34,18 @@ public class StreamsStuff {
             Rubble, Betty, 4/4/1915, CEO, {aveStockPrice=300}
             """;
 
-        Predicate<Employee> dummySelector = e -> e.getLastName().equals("N/A");
-        Optional<Employee> optionEmp = peopleText
-//        boolean allOver3k = peopleText
-                .lines()
-                .map(Employee::createEmployee)
-                .map(e -> (Employee)e)
-                .filter(dummySelector.negate())
-                .filter(e -> e.getSalary() > 2)
-                .findFirst();
-        System.out.println(optionEmp
-                .map(Employee::getFirstName)
-                .orElse("Nobody"));
+//        Predicate<Employee> dummySelector = e -> e.getLastName().equals("N/A");
+//        Optional<Employee> optionEmp = peopleText
+////        boolean allOver3k = peopleText
+//                .lines()
+//                .map(Employee::createEmployee)
+//                .map(e -> (Employee)e)
+//                .filter(dummySelector.negate())
+//                .filter(e -> e.getSalary() > 2)
+//                .findFirst();
+//        System.out.println(optionEmp
+//                .map(Employee::getFirstName)
+//                .orElse("Nobody"));
 //                .noneMatch(e -> e.getSalary() < 0);
 //        System.out.println(allOver3k);
 //                .map(Employee::getFirstName)
@@ -61,11 +63,43 @@ public class StreamsStuff {
 //            throw new RuntimeException(e);
 //        }
 
+        Predicate<Employee> dummyEmpSelector = employee -> "N/A".equals(employee.getLastName());
+        Predicate<Employee> overFiveKSelector = e -> e.getSalary() > 5000;
+        Predicate<Employee> noDummiesAndOverFiveK = dummyEmpSelector.negate().and(overFiveKSelector);
+//        int result = peopleText
+//        OptionalDouble result = peopleText
+        OptionalInt result = peopleText
+//        long result = peopleText
+                .lines()
+                .map(Employee::createEmployee)
+                .map(e -> (Employee)e)
+                .filter(noDummiesAndOverFiveK)
+                .collect(Collectors.toSet()).stream()
+                .sorted(comparing(Employee::getLastName)
+                                .thenComparing(Employee::getFirstName)
+                                .thenComparingInt(Employee::getSalary))
+                .skip(5)
+                .mapToInt(StreamsStuff::showEmpAndGetSalary)
+//                .average();
+//                .max();
+//                .count();
+//                .reduce(0, (a, b) -> a < b ? a : b);
+                .reduce((a, b) -> a < b ? a : b);
+
+
+        System.out.println(result.orElse(-1));
+//        System.out.println(result);
+
+        Optional<String> output = Stream.of("tom", "jerry", "mary", "sam")
+                .reduce((a, b) -> a.toUpperCase().concat("_").concat(b.toUpperCase()));
+        System.out.println(output.orElse(""));
+
 //        int sum = peopleText
 //                .lines()
 //                .map(Employee::createEmployee)
 //                .mapToInt(IEmployee::getSalary)
 //                .sum();
+
 //        System.out.println(sum);
 
 //        int sum = peopleText
